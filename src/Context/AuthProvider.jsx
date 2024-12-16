@@ -3,35 +3,55 @@ import { useEffect, useState } from 'react';
 import AuthContext from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import auth from '../Firebase/friebase.init';
-const googlePorvider=new GoogleAuthProvider()
+import axios from 'axios';
+const googlePorvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
    const [user, setUser] = useState(null);
    const [loder, setLoder] = useState(true)
 
-   const creatUsers=(email,password)=>{
+   const creatUsers = (email, password) => {
       setLoder(true)
-      return createUserWithEmailAndPassword(auth,email,password)
+      return createUserWithEmailAndPassword(auth, email, password)
    }
-   const handelLoing=(email,password)=>{
-      return signInWithEmailAndPassword(auth,email,password)
+   const handelLoing = (email, password) => {
+      setLoder(true)
+      return signInWithEmailAndPassword(auth, email, password)
    }
-   const handleSinOut=()=>{
+   const handleSinOut = () => {
       return signOut(auth)
    }
-   const handleGoogle=()=>{
-      return signInWithPopup(auth,googlePorvider)
+   const handleGoogle = () => {
+      setLoder(true)
+      return signInWithPopup(auth, googlePorvider)
    }
-   useEffect(()=>{
-      const unsribcre=onAuthStateChanged(auth,crruentUSer=>{
+   useEffect(() => {
+      const unsribcre = onAuthStateChanged(auth, crruentUSer => {
          setUser(crruentUSer)
-         setLoder(false)
          console.log(crruentUSer);
+         console.log(crruentUSer?.email);
+         if (crruentUSer?.email) {
+            const user = { userEmail: crruentUSer.email }
+            axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+               .then(res => {
+                  console.log(res.data);
+                  setLoder(false)
+               })
+         }
+         else {
+            axios.post('http://localhost:5000/logOut', {}, { withCredentials: true })
+               .then(res => {
+                  console.log(res.data)
+                  setLoder(false)
+               })
+         }
+
+
       })
-      return()=>{
+      return () => {
          unsribcre()
       }
-   },[])
+   }, [])
 
    const information = {
       user,

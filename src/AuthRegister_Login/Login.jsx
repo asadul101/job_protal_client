@@ -3,9 +3,14 @@ import React, { useContext } from 'react';
 import loginAinmatein from '../assets/login/loginAnimation.json'
 import AuthContext from '../Context/AuthContext';
 import SocalAuth from '../Pages/Sharar/SocalAuth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
    const {handelLoing}=useContext(AuthContext)
+   const location=useLocation()
+   const navigate=useNavigate()
+   const from=location.state || '/';
+   console.log(location);
    const handleLogin = e => {
       e.preventDefault();
       const form = e.target;
@@ -16,6 +21,7 @@ const Login = () => {
       handelLoing(email,password)
       .then(res=>{
          console.log(res.user);
+         navigate(from)
       })
       .catch(error=>{
          console.log(error.message);

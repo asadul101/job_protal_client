@@ -7,9 +7,9 @@ const Navbar = () => {
    const { user,handleSinOut } = useContext(AuthContext)
    const links = <>
       <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/'>Home</NavLink></li>
+      <li><NavLink to='/jobAppllyCation'>My Apply</NavLink></li>
+      <li><NavLink to='addjob'>A job</NavLink></li>
+      <li><NavLink to='/postjob'>MyPost job</NavLink></li>
       </>
 
    return (
