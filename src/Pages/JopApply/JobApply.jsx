@@ -17,7 +17,7 @@ const JobApply = () => {
       const resume = form.resume.value;
       console.log(linked, github, resume);
       const jobApplay={linked,github,resume,apply_cationEmail:user.email,job_id:id}
-      fetch('http://localhost:5000/job-applycations',{
+      fetch('https://job-protal-server-sooty.vercel.app/job-applycations',{
          method:'post',
          headers:{
             'Content-Type': 'application/json'

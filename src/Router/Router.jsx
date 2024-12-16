@@ -25,7 +25,7 @@ import ViweApplication from "../Pages/ViweApplication/ViweApplication";
       {
          path:'/jobs/:id',
          element:<AuthPrivate><JobDetalis></JobDetalis></AuthPrivate>,
-         loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+         loader:({params})=>fetch(`https://job-protal-server-sooty.vercel.app/jobs/${params.id}`)
       },
       {
          path:'/jobapply/:id',
@@ -46,7 +46,7 @@ import ViweApplication from "../Pages/ViweApplication/ViweApplication";
       {
          path:'/viwapple/:id',
          element:<AuthPrivate><ViweApplication></ViweApplication></AuthPrivate>,
-         loader:({params})=>fetch(`http://localhost:5000/job-applycations/jobs/${params.id}`)
+         loader:({params})=>fetch(`https://job-protal-server-sooty.vercel.app/job-applycations/jobs/${params.id}`)
       },
       {
          path:'/register',

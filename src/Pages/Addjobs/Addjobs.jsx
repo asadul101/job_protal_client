@@ -15,7 +15,7 @@ const Addjobs = () => {
       newjob.requirements = newjob.requirements.split('\n')
       newjob.responsibilities = newjob.responsibilities.split('\n')
       console.log(newjob);
-      fetch('http://localhost:5000/jobs', {
+      fetch('https://job-protal-server-sooty.vercel.app/jobs', {
          method: 'post',
          headers: {
             'Content-Type': 'application/json'

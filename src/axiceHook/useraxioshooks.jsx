@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const axiosInstance = axios.create({
-   baseURL: 'http://localhost:5000',
+   baseURL: 'https://job-protal-server-sooty.vercel.app',
    withCredentials: true
 })
 

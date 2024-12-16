@@ -9,13 +9,13 @@ const JobApplyCation = () => {
    const axiosSecure=useraxioshooks()
    useEffect(() => {
 
-      // fetch(`http://localhost:5000/job-applycation?email=${user.email}`)
+      // fetch(`https://job-protal-server-sooty.vercel.app/job-applycation?email=${user.email}`)
       //    .then(res => res.json())
       //    .then(data => {
       //       setJobs(data)
       //    })
 
-      // axios.get(`http://localhost:5000/job-applycation?email=${user.email}`,{withCredentials:true})
+      // axios.get(`https://job-protal-server-sooty.vercel.app/job-applycation?email=${user.email}`,{withCredentials:true})
       // .then(res=>setJobs(res.data))
 
       axiosSecure.get(`/job-applycation?email=${user.email}`)

@@ -11,7 +11,7 @@ const ViweApplication = () => {
          status:e.target.value
       }
       console.log(data,id);
-      fetch(`http://localhost:5000/job-applycations/${id}`,{
+      fetch(`https://job-protal-server-sooty.vercel.app/job-applycations/${id}`,{
          method:'put',
          headers:{
              'Content-Type': 'application/json'

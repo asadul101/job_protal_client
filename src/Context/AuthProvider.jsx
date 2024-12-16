@@ -32,14 +32,14 @@ const AuthProvider = ({ children }) => {
          console.log(crruentUSer?.email);
          if (crruentUSer?.email) {
             const user = { userEmail: crruentUSer.email }
-            axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+            axios.post('https://job-protal-server-sooty.vercel.app/jwt', user, { withCredentials: true })
                .then(res => {
                   console.log(res.data);
                   setLoder(false)
                })
          }
          else {
-            axios.post('http://localhost:5000/logOut', {}, { withCredentials: true })
+            axios.post('https://job-protal-server-sooty.vercel.app/logOut', {}, { withCredentials: true })
                .then(res => {
                   console.log(res.data)
                   setLoder(false)
